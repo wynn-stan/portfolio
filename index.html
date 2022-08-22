@@ -1,0 +1,755 @@
+<!--
+    1 page,
+
+    lazy loading elements/endless scrolling
+
+    The nav bar,
+        the content section, 
+            about me
+                winston lamptey, alias wynnstan
+                Hey There
+                ghana, full stack software dev with a bachelors in computer science from knust
+                general interests
+                    svg, computer science and engineering, anime, boxing, Business and Finance, Mental Health, Community Development
+            contact me          
+                your name, email  
+    my face/some pic
+
+    contact me page, through gmail or fillout this form sent to my gmail
+
+    Home is about me section.
+
+    Technical skills
+    everything in portfolio with svgs
+
+    projects, use bootstrap cards
+    images -> screenshots of the project
+
+    Socials, github, linkedIn
+
+    // build the nav section,
+        svg-icon, wynnstan header
+        nav section
+            - Home
+            - About
+            - Contact
+
+        create a container for the nav section
+            set a justify-content-
+        create a container for the links section
+        create a container for the brand section
+
+        create the home section, get a pic of me
+
+        remove  padding and margin from the skill-list li
+
+        when on smaller screen the name and email form are not width 100%
+            set it to 100 on smaller screens
+
+        build a bunch of box for each skill with a white background and some color we'll figure out later
+            set the background to white for each skill col
+            give some padding
+            let width and height be equal, 50px or something
+            let icon be at bottom of text
+            create a box shadow
+
+            let each col be seperated with some margin use justify-content-arond
+
+            create a header for the contact and the projects sections
+                create a section header div/h3
+                place at top
+
+    
+
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+
+    <style>
+
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --brand-font-color: black;
+            --body-bg: rgb(255, 255, 255);
+            --nav-section-bg: white;
+            --nav-link-color: black;
+
+            --nav-link-hover-color: white;
+            --nav-link-hover-bg: cornflowerblue;
+
+            --projects-bg: #eaecef ;
+            --projects-text-color: #2d425e;
+
+            --skills-main-bg: #1bb1b2;
+            --skills-text-color: white;
+
+            --skills-col-bg: rgb(245, 245, 245);
+
+            --contact-bg: #d2faff;
+            --contact-text-color: #3a3736;
+            
+        }
+
+        ul {
+            list-style-type: none;
+            margin: auto 0;
+        }
+
+        body {
+            background-color: var(--body-bg);
+            min-height: 100vh;
+        }
+        
+        #main-container {
+
+        }
+
+       .nav-links a {
+            display: inline-block;
+            padding: 10px 25px;
+            text-decoration: none;
+            color: var(--nav-link-color);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+
+        }
+
+        .nav-links a:hover {
+            background-color: var(--nav-link-hover-bg);
+            color: var(--nav-link-hover-color);
+
+            transition: color 1s ease;
+            transition: background-color 1s ease;
+        }
+
+        .brand-section img{
+            width: 50px;
+            height: 50px;
+            padding: 3px;
+            border: 1px solid rgb(116, 116, 116);
+            border-radius: 50%;
+            background-color: rgb(216, 216, 216);
+        }
+
+        .brand-section p {
+            margin: auto;
+            padding-left: 5px;
+            font-size: 20px;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            color: var(--brand-font-color);
+        }
+
+        /*
+            styling the nav section
+        */
+
+        .nav-section {
+            display: flex;
+            background-color: var(--nav-section-bg);
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        /*
+            styling the home section
+            
+        */
+
+        #home img {
+            width: 70%;
+            max-width: 350px;
+            border-radius: 20%;
+            max-height: 350px;
+
+        }
+
+        .profile-description-container .header {
+            font-size: xx-large;
+            text-align: center;
+        }
+
+        .profile-description-container {
+            max-width: 300px
+        }
+
+        .profile-description-container .header-description {
+            text-align: center;
+        }
+
+        
+        /*
+            
+            Styling the section 
+                set the section to display flex to align items horizontally
+                set the section container contents to margin-y auto to align vertically
+                set the spacing between the container contents to space around
+
+                take off image width
+
+                set home an others to yeah, i'll use js
+                
+                
+        */
+
+        #home {
+                
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+        }
+
+        /*
+            styling skill section
+                technical list
+                    - remove the padding/margin from them
+                    the ul will be flex, flex-column
+                        the li/rows with will be flex, row, so it's sub-items are aligned horizontally
+        */
+
+        .technical-skills-container {
+
+            display: flex;
+            flex-direction: column;
+
+            justify-content: center;
+
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+            
+        }
+
+        .technical-skills-container .header-container h2 {
+            font-size: 3em;
+        }
+
+        .technical-skills-container .header-container p {
+            font-size: large;
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 0 5px;
+        }
+
+        .skill-row {
+            display: flex;
+            justify-content: space-around;
+            height: 100px;
+
+        }
+
+        .skill-row .skill-col {
+
+            background-color: var(--skills-col-bg);
+            width: 100px;
+            color: black;
+            padding: 5px;
+            margin-top: 10px;
+            border-radius: 10%;    
+
+
+        }
+
+        .skill-row .skill-col:hover {
+            animation: create-box-shadow 0.2s ease forwards;
+        }
+
+        @keyframes create-box-shadow {
+
+            from {
+                box-shadow: 0px 0px 0px initial;
+            }
+
+            to {
+                box-shadow: 6px 6px 2px #0c5c5c;
+            }
+            
+        }
+
+        .skill-row .skill-col img {
+            max-width: 40px;
+            margin: auto;
+        }
+
+        #projects .section-header {
+            text-align: center;
+            position: absolute;
+            top: 10px;
+            width: 100%;
+
+            font-size: 3em;
+        }
+
+        #projects {
+            position: relative;
+        }
+        
+
+        /*
+            Styling the projects section
+        */
+
+        #projects .card{
+            max-width: 300px;
+        }
+
+        /*
+            Styling the section svgs
+        */
+
+        .section-svg {
+            max-width: 300px;
+            max-height: 300px;
+            overflow: hidden;
+        }
+
+        /*
+            Styling the technical skills section
+                except the skills section set the background color of the respective sections to the color of their respective svgs
+
+                set the tecnincal skills text part to be horizontally aligned with the svg.
+                set it's container to display flex, and margin auto the containers content
+
+        */
+
+        #skills {
+
+            display: flex;
+            justify-content: space-around;
+
+            min-height: 100vh;
+            text-align: center;
+
+            background-color: var(--skills-main-bg);
+            color: var(--skills-text-color);
+            
+        }
+
+        #skills img {
+            border-radius: 50%;
+            margin: auto 0;
+        }
+
+        /*
+            Styling the projects section
+                give some space in between the cards 
+
+        */
+
+        #projects {
+
+            display: flex;
+            flex-direction: column;
+
+            min-height: 100vh;
+
+            background-color: var(--projects-bg);
+            color: var(--projects-text-color);
+        }
+
+        #projects .card-group {
+            display: flex;
+            justify-content: space-around;
+
+            padding-bottom: 10px;
+        }
+        
+        #projects .section-svg {
+            align-self: center;
+        }
+
+        /*
+            Styling the contacts
+                set the container to display flex to align the items horizontally
+                set the align-items-center to align items center the container items vertically
+        */
+
+        #contact {
+
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-direction: row-reverse;
+
+            min-height: 100vh;
+
+            background-color: var(--contact-bg);
+            color: var(--contact-text-color);
+
+            padding: 0 10px;
+
+        }    
+
+        #contact form > div {
+            padding: 5px;
+        }
+
+        #contact form textarea {
+            width: 100%;
+            height: 100%;
+            max-height: 100px;
+            resize: none;
+
+            margin-bottom: 15px;
+        }
+
+        #contact form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            
+        }
+
+        #contact form .social-icons-container {
+            display: flex;
+            justify-content: center;
+            padding-top: 20px;
+        }
+
+        #contact form .social-icon {
+            max-width: 50px;
+            margin: 0 15px;
+        }
+
+        #contact form .section-header {
+            text-align: center;
+            font-size: 2em;
+            padding: 20px 0;
+        }
+
+        #contact form input, #contact form textarea {
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        
+        /*
+            Styling for mobile screens
+        */
+
+        @media screen and (max-width: 680px) {
+
+            /*
+                For these small screens
+                    do not display the nav links,
+                    display the brand in center of page
+
+                    display my profile image in center of page before hey there and after the description
+                    set the section containers to display flex flex column
+
+                    make the projects line up in a column
+            */
+
+            .nav-section {
+                flex-direction: column;
+                align-items: center;
+            }   
+
+            .nav-section .nav-links {
+                display: none;
+            }   
+
+            #home, #skills, #projects, #contact {
+                flex-direction: column;
+                align-items: center;
+                padding-bottom: 30px;
+                
+            }
+
+            form input {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            #projects .card-group {
+
+                flex-direction: column;
+            }
+
+        }
+
+        
+
+
+    </style>
+
+</head>
+<body>
+    
+    <main id="main-container">
+        <nav class="nav-section justify-content-between px-5 py-3">
+            
+            <div class="brand-section d-flex">
+                    <img src="/public/svgs/avatar.svg" alt="">
+
+                    <p>Wynnstan</p>
+            </div>
+
+            <ul class="nav-links justify-content-around">
+                <li>
+                    <a href="#home">Home</a>
+                </li>
+                <li>
+                    <a href="#skills">
+                        Skills
+                    </a>
+                </li>
+                <li>
+                    <a href="#projects">
+                        Projects
+                    </a>
+                </li>
+                <li>
+                    <a href="#contact">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
+
+        <section id="home" class="">
+
+            <div class="profile-description-container my-auto">
+                <div class="header">
+                    Hey There
+                </div>
+
+                <div class="header-description">
+                    I'm Winston (a.k.a wynnstan)
+                    <br/> a Full-Stack Web Developer 
+                    <br/> with a Bachelors in Computer Science.
+                </div>
+            </div>
+
+            <img src="public/images/profile-image-sq.jpg" alt="">
+
+        </section>
+
+        <section id="skills">
+
+            <img src="public/svgs/skills.svg" alt="" class="about-svg section-svg">
+
+            <!--
+                About section
+                    my technical skills, 
+                    my projects, cards of projects
+
+                    create a container for the technical skills section
+                        create an header then an unordered list with skills and svgs associated
+
+                    create a container for the projects display section
+            -->
+
+                <div class="technical-skills-container">
+
+                    <div class="header-container">
+
+                        <h2>Technical Skills </h2>
+
+                        <p>An overview of programming languages and tools I frequently use</p>
+
+                    </div>
+
+                    <div class="skill-list">
+
+                        <div class="skill-row">
+                            
+                            <div class="skill-col">
+                                <p>NodeJs</p>
+                                <img src="public/svgs/node-js.svg" class="skill-icon" alt="">
+                            </div>
+
+                            <div class="skill-col">
+                                <p>Python</p>
+                                <img src="public/svgs/python.svg" class="skill-icon" alt="">
+                            </div>
+
+                            <div class="skill-col">
+                                <p>MySQL</p>
+                                <img src="public/svgs/mysql.svg" class="skill-icon" alt="">
+                            </div>
+
+                        </div>
+
+                        <div class="skill-row">
+                            
+                            <div class="skill-col">
+                                <p>ReactJs</p>
+                                <img src="public/svgs/monitor.svg" class="skill-icon" alt="">
+                            </div>
+
+                            <div class="skill-col">
+                                <p>PHP</p>
+                                <img src="public/svgs/php.svg" class="skill-icon php" alt="">
+                            </div>
+
+                            <div class="skill-col">
+                                <p>MongoDB</p>
+                                <img src="public/svgs/monitor.svg" class="skill-icon" alt="">
+                            </div>
+
+                        </div>
+
+                        <div class="skill-row">
+
+                            <div class="skill-col">
+                                <p>HTML/CSS</p>
+                                <img src="public/svgs/monitor.svg" class="skill-icon" alt="">
+                            </div>
+                            
+                            <div class="skill-col">
+                                <p>NodeJs</p>
+                                <img src="public/svgs/git.svg" class="skill-icon" alt="">
+                            </div>
+                            
+                            <div class="skill-col">
+                                <p>VanillaJS</p>
+                                <img src="public/svgs/javascript.svg" class="skill-icon" alt="">
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+        </section>
+
+        <section id="projects">
+
+            <header class="section-header">
+                My Projects
+            </header>
+
+            <img src="public/svgs/programming-setup.svg" alt="" class="projects-svg section-svg">
+
+            <div class="card-group">
+                
+                <div class="card">
+                    <img src="public/images/shackup-shot-crop.png" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title"> ShackUp</h3>
+                        <p class="card-text">
+                           A News Events Application
+                        </p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://shackup-x.herokuapp.com" class="btn btn-primary">View</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <img src="public/images/techrus-shot-crop.png" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            Tech-R-Us
+                        </h3>
+
+                        <div class="card-text">
+                            A landing page for the Tech-R-Us club
+                        </div>
+
+                    </div>
+
+                    <div class="card-footer">
+                        <a href="https://techrus1.herokuapp.com" class="btn btn-primary">View</a>
+                    </div>
+
+                </div>
+
+                <div class="card">
+                    <img src="public/images/csmate-shot-crop.png" alt="" class="card-img-top">
+                    <div class="card-body">
+                        <h3 class="card-title">
+                            CS-MATE
+                        </h3>
+
+                        <div class="card-text">
+                            A Lecture Notifcation App
+                        </div>
+
+                    </div>
+
+                    <div class="card-footer">
+                        <a href="https://csmate.herokuapp.com/" class="btn btn-primary">View</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <section id="contact">
+
+            <img src="public/svgs/boat.svg" alt="" class="contact-svg section-svg">
+
+            <form action="" class="">
+
+                <header class="section-header">
+                    Contacts
+                </header>
+                
+                <div class="personal-info">
+
+                    <input type="text" name="name" id="name" placeholder="Name" class="" required>
+                
+                    <input type="email" name="email" id="email" placeholder="Email" class=""required>
+
+                </div>
+
+                <div>
+                    <textarea name="message" id="message" cols="30" rows="10" placeholder="Message" class=""></textarea>
+                </div>
+
+                <button class="btn btn-primary">Submit</button>
+
+                <div class="social-icons-container">
+                    
+                    <img src="public/svgs/github.svg" class="social-icon" alt="">
+            
+                    <img src="public/svgs/linkedin.svg" alt="" class="social-icon">
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+    <script>
+
+        const nav_section = document.querySelector(".nav-section");
+        const home = document.getElementById("home");
+
+
+        /*
+            to make the home height fill up the screen, 
+                get the current viewport height, 
+                get the height of the navsection
+                subtract vh - navHeight
+                set it as minimum
+        */
+
+        let nav_section_height = nav_section.clientHeight;
+        let viewportHeight = window.innerHeight;
+
+        let section_height = viewportHeight - nav_section_height;
+
+        home.style.height = `${section_height}px`;
+        
+    </script>
+
+</body>
+</html>
